@@ -36,7 +36,7 @@ function Login() {
         <link rel="icon" href="/favicon.svg" />
       </Head>
       <Image
-        src="https://bit.ly/3HUCAZA"
+        src="https://rb.gy/p2hphi"
         layout="fill"
         className="-z-10 !hidden opacity-60 sm:!inline"
         objectFit="cover"
