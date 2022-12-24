@@ -33,7 +33,7 @@ function Login() {
     <div className="relative flex h-screen w-screen flex-col md:items-center md:justify-center">
       <Head>
         <title>Netflix</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <Image
         src="https://bit.ly/3HWpUkU"

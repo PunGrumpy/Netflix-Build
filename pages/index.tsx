@@ -57,7 +57,7 @@ const Home = ({
         <title>
           {movie?.title || movie?.original_name || 'Home'} - Netflix
         </title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
 
       <Header />
