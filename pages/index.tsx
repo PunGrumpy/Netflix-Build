@@ -35,7 +35,7 @@ const Home = ({
   romanceMovies,
   topRated,
   trendingNow,
-  products,
+  products
 }: Props) => {
   const { user, loading } = useAuth()
   const subscription = useSubscription(user)
@@ -88,10 +88,10 @@ export default Home
 export const getServerSideProps = async () => {
   const products = await getProducts(payments, {
     includePrices: true,
-    activeOnly: true,
+    activeOnly: true
   })
-    .then((res) => res)
-    .catch((error) => console.log(error.message))
+    .then(res => res)
+    .catch(error => console.log(error.message))
 
   const [
     netflixOriginals,
@@ -101,16 +101,16 @@ export const getServerSideProps = async () => {
     comedyMovies,
     horrorMovies,
     romanceMovies,
-    documentaries,
+    documentaries
   ] = await Promise.all([
-    fetch(requests.fetchNetflixOriginals).then((res) => res.json()),
-    fetch(requests.fetchTrending).then((res) => res.json()),
-    fetch(requests.fetchTopRated).then((res) => res.json()),
-    fetch(requests.fetchActionMovies).then((res) => res.json()),
-    fetch(requests.fetchComedyMovies).then((res) => res.json()),
-    fetch(requests.fetchHorrorMovies).then((res) => res.json()),
-    fetch(requests.fetchRomanceMovies).then((res) => res.json()),
-    fetch(requests.fetchDocumentaries).then((res) => res.json()),
+    fetch(requests.fetchNetflixOriginals).then(res => res.json()),
+    fetch(requests.fetchTrending).then(res => res.json()),
+    fetch(requests.fetchTopRated).then(res => res.json()),
+    fetch(requests.fetchActionMovies).then(res => res.json()),
+    fetch(requests.fetchComedyMovies).then(res => res.json()),
+    fetch(requests.fetchHorrorMovies).then(res => res.json()),
+    fetch(requests.fetchRomanceMovies).then(res => res.json()),
+    fetch(requests.fetchDocumentaries).then(res => res.json())
   ])
 
   return {
@@ -123,7 +123,7 @@ export const getServerSideProps = async () => {
       horrorMovies: horrorMovies.results,
       romanceMovies: romanceMovies.results,
       documentaries: documentaries.results,
-      products,
-    },
+      products
+    }
   }
 }

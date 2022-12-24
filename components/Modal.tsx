@@ -9,7 +9,7 @@ import {
   ThumbUpIcon,
   VolumeOffIcon,
   VolumeUpIcon,
-  XIcon,
+  XIcon
 } from '@heroicons/react/outline'
 import { Element, Genre, Movie } from '../typings'
 import MuiModal from '@mui/material/Modal'
@@ -19,7 +19,7 @@ import {
   doc,
   DocumentData,
   onSnapshot,
-  setDoc,
+  setDoc
 } from 'firebase/firestore'
 import { db } from '../firebase'
 import useAuth from '../hooks/useAuth'
@@ -42,7 +42,7 @@ function Modal() {
     fontSize: '16px',
     padding: '15px',
     borderRadius: '9999px',
-    maxWidth: '1000px',
+    maxWidth: '1000px'
   }
 
   useEffect(() => {
@@ -55,7 +55,7 @@ function Modal() {
         }/${movie?.id}?api_key=${
           process.env.NEXT_PUBLIC_API_KEY
         }&language=en-US&append_to_response=videos`
-      ).then((response) => response.json())
+      ).then(response => response.json())
       if (data?.videos) {
         const index = data.videos.results.findIndex(
           (element: Element) => element.type === 'Trailer'
@@ -81,7 +81,7 @@ function Modal() {
     if (user) {
       return onSnapshot(
         collection(db, 'customers', user.uid, 'myList'),
-        (snapshot) => setMovies(snapshot.docs)
+        snapshot => setMovies(snapshot.docs)
       )
     }
   }, [db, movie?.id])
@@ -90,7 +90,7 @@ function Modal() {
   useEffect(
     () =>
       setAddedToList(
-        movies.findIndex((result) => result.data().id === movie?.id) !== -1
+        movies.findIndex(result => result.data().id === movie?.id) !== -1
       ),
     [movies]
   )
@@ -105,14 +105,14 @@ function Modal() {
         `${movie?.title || movie?.original_name} has been removed from My List`,
         {
           duration: 8000,
-          style: toastStyle,
+          style: toastStyle
         }
       )
     } else {
       await setDoc(
         doc(db, 'customers', user!.uid, 'myList', movie?.id.toString()!),
         {
-          ...movie,
+          ...movie
         }
       )
 
@@ -120,7 +120,7 @@ function Modal() {
         `${movie?.title || movie?.original_name} has been added to My List.`,
         {
           duration: 8000,
-          style: toastStyle,
+          style: toastStyle
         }
       )
     }
@@ -196,7 +196,7 @@ function Modal() {
               <div className="flex flex-col space-y-3 text-sm">
                 <div>
                   <span className="text-[gray]">Genres:</span>{' '}
-                  {genres.map((genre) => genre.name).join(', ')}
+                  {genres.map(genre => genre.name).join(', ')}
                 </div>
 
                 <div>
